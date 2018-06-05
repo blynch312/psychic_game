@@ -26,17 +26,20 @@ document.onkeypress = function() {
     if (userGuess == computerGuess) {
       alert("You Win!");
       wins++;
-      options = [];
 
-      if (userGuess != computerGuess) {
+      if (userGuess !== computerGuess) {
         guessCount--;
         options.push(userGuess);
       }
 
       if (guessCount === 0) {
+        reset();
         guessCount = 5;
         losses++;
         guessChoice = [];
+      } else {
+        document.getElementById("guesses-so-far").innerText =
+          guessesText + event.key + ", ";
       }
     }
   }
